@@ -34,6 +34,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var doneButton: UIButton!
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,16 +81,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if let newValue = Float(textField.text!) {
                 if newValue >= 0 && newValue <= 1 {
                     sliderColor.setValue(newValue, animated: true)
+                    viewColor.backgroundColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
                     switch color {
                         case red:
                             red = CGFloat(newValue)
-
                         case green:
                             green = CGFloat(newValue)
-
                         case blue:
                             blue = CGFloat(newValue)
-
                         default: break
                     }
                 } else {
@@ -100,7 +102,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
 
     }
-    
+
     @IBAction func sliderActionRed () {
         red = CGFloat(sliderColorRed.value)
         refreshViewColorBackground()
@@ -121,31 +123,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func donePresseg(_ sender: Any) {
-        checkingCorrectValue(color: red, sliderColor: sliderColorRed, textField: textFieldRed)
-        checkingCorrectValue(color: green, sliderColor: sliderColorGreen, textField: textFieldGreen)
-        checkingCorrectValue(color: blue, sliderColor: sliderColorBlue, textField: textFieldBlue)
+
+        if textFieldRed.clearsOnBeginEditing == true {
+            checkingCorrectValue(color: red, sliderColor: sliderColorRed, textField: textFieldRed)
+            textFieldRed.clearsOnBeginEditing = false
+        } else if textFieldGreen.clearsOnBeginEditing == true{
+            checkingCorrectValue(color: green, sliderColor: sliderColorGreen, textField: textFieldGreen)
+            textFieldGreen.clearsOnBeginEditing = false
+        } else if textFieldBlue.clearsOnBeginEditing == true {
+            checkingCorrectValue(color: blue, sliderColor: sliderColorBlue, textField: textFieldBlue)
+            textFieldBlue.clearsOnBeginEditing = false
+        } else{
+            return
+        }
+
         viewColor.backgroundColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
         doneButton.isHidden = true
-
     }
 
     @IBAction func EditTextFieldRed(_ sender: Any) {
+        textFieldRed.clearsOnBeginEditing = true
         doneButton.isHidden = false
     }
 
-//    @IBAction func EditTextFieldRed(_ sender: Any) {
-//        doneButton.isHidden = false
-//}
-//
-//
-//    @IBAction func EditTextFieldGreen(_ sender: Any) {
-//        doneButton.isHidden = false
-//    }
-//
-//    @IBAction func EditTextFieldBlue(_ sender: Any) {
-//        doneButton.isHidden = false
-//    }
+    @IBAction func EditTextFieldGreen(_ sender: Any) {
+        textFieldGreen.clearsOnBeginEditing = true
+        doneButton.isHidden = false
+    }
 
+    @IBAction func EditTextFieldBlue(_ sender: Any) {
+        textFieldBlue.clearsOnBeginEditing = true
+        doneButton.isHidden = false
+    }
 }
-
-
