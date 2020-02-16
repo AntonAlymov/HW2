@@ -29,7 +29,10 @@
                                     <constraint firstAttribute="height" constant="34.329999999999998" id="uJe-BB-rtw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="EditTextFieldGreen:" destination="BYZ-38-t0r" eventType="editingChanged" id="IAi-C0-rqJ"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZp-YI-L1J">
                                 <rect key="frame" x="20" y="238" width="31" height="18"/>
@@ -95,7 +98,10 @@
                                     <constraint firstAttribute="width" constant="56" id="GRB-KQ-KZi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="EditTextFieldBlue:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="gpc-Ge-p67"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZV-Zd-pZ3">
                                 <rect key="frame" x="20" y="358" width="35" height="18"/>
@@ -110,9 +116,9 @@
                                     <constraint firstAttribute="width" constant="56" id="qUE-CX-fkz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <action selector="EditTextFieldRed:" destination="BYZ-38-t0r" eventType="editingChanged" id="ZZj-VN-8iU"/>
+                                    <action selector="EditTextFieldRed:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="1Al-Fj-Pft"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc8-63-jlW">
